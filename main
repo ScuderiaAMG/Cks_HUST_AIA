@@ -1,0 +1,125 @@
+/*************************************************main.c*****************************************/
+#include "main.h"
+#include "public.h"
+
+void main()
+{
+    int language = CHINESE;
+    int gdriver = VGA;
+    int gmode = VGAHI;
+    int page = WELCOME;
+    INFO *temp;
+    DRONEINFO *drone;
+    char pesticide[20] = {'\0'};
+    char now_field[80] = {'\0'};
+    initgraph(&gdriver,&gmode,"c:\\borlandc\\bgi");
+    srand(time(0));
+
+    while(1)
+    { 
+
+        switch(page)
+        {
+            case WELCOME :
+               page = welcome_page(&language); //0
+               break;
+
+            case LOGIN :
+               page = login_page(temp,language);//1
+               break;
+
+            case SIGNUP :
+               page = signup_page(language);//2
+               break;
+
+            case HOME :
+               page = home_page(temp,language);
+               break;
+
+            case FIELD :
+               page = field_page(temp,now_field,language);
+               break;
+
+            case DRONE :
+               page = drone_page(temp->name,drone->name,drone,language);
+               break;
+
+            case PESTICIDE :
+               page = pesticide_page(temp->name,pesticide,language);
+               break;
+
+            case DETECTOR :
+               page = detect_page(temp->name,now_field,language);
+               break; 
+            
+            case DRAW_FIELD:
+               page = draw_field_page(temp->name,now_field,language);
+               break;
+
+            case PLANT :
+               page = plant_page(temp->name,now_field,language);
+               break;
+            
+            case HOUSE :
+               page = house_page(temp->name,now_field,language);
+               break;
+            
+            case DRONE_LIST:
+               page = drone_list_page(temp->name,drone,language);
+               break;
+
+            case LOGS:
+               page = logs_page(language);
+               break;
+
+			case QUIT:  
+                quit_page();
+				closegraph();
+				exit(1);
+				break;  
+            
+			default :
+				exit(1);
+        }
+    }
+      getch();
+      closegraph();
+}
+/******************************************main.h**********************************************/
+#ifndef _MAIN_H
+#define _MAIN_H
+
+#include "detectf.h"
+#include "login.h"
+#include "welcome.h"
+#include "signup.h"
+#include "home.h"
+#include "field.h"
+#include "fief.h"
+#include "plant.h"
+#include "drone.h"
+#include "house.h"
+#include "dronf.h"
+#include "flyfunc.h"
+#include "detect.h"
+#include "pest.h"
+#include "langua.h"
+#include "logs.h"
+#include "quit.h"
+
+#define WELCOME 0
+#define LOGIN 1
+#define SIGHUP 2
+#define HOME 3
+#define FIELD 4
+#define DRONE 5
+#define PESTICIDE 6
+#define DETECTOR 7
+#define QUIT 8
+#define LOGS 9
+#define DRAW_FIELD 10
+#define PLANT 11
+#define HOUSE 12
+#define DRONE_LIST 13
+
+#endif
