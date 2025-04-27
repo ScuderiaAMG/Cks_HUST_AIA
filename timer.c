@@ -1,8 +1,8 @@
 include 'timer.h'
 
+//æ³¨æ„ï¼ï¼ï¼è¿™é¡¹.cæ–‡ä»¶ä»…ç”¨äºæµ‹è¯•ï¼ï¼ï¼å¹¶æœªæ·»åŠ åˆ°æœ€ç»ˆå·¥ç¨‹å†…ï¼ï¼ï¼
 
-
-// »ñÈ¡µ±Ç°ÏµÍ³Ê±¼ä£¨ÒÔºÁÃëÎªµ¥Î»£©
+// è·å–å½“å‰ç³»ç»Ÿæ—¶é—´ï¼ˆä»¥æ¯«ç§’ä¸ºå•ä½ï¼‰
 unsigned long currentTime()
 {
     struct time t;
@@ -10,14 +10,14 @@ unsigned long currentTime()
     return t.ti_hour * 3600000L + t.ti_min * 60000L + t.ti_sec * 1000L + t.ti_hund;
 }
 
-// ³õÊ¼»¯¼ÆÊ±Æ÷
+// åˆå§‹åŒ–è®¡æ—¶å™¨
 void initializeTimer(Timer* timer)
 {
     timer->running = false;
     timer->elapsed_time = 0.0;
 }
 
-// Æô¶¯¼ÆÊ±Æ÷
+// å¯åŠ¨è®¡æ—¶å™¨
 void startTimer(Timer* timer)
 {
     if (!timer->running)
@@ -27,7 +27,7 @@ void startTimer(Timer* timer)
     }
 }
 
-// Í£Ö¹¼ÆÊ±Æ÷
+// åœæ­¢è®¡æ—¶å™¨
 void stopTimer(Timer* timer)
 {
     if (timer->running)
@@ -38,13 +38,13 @@ void stopTimer(Timer* timer)
     }
 }
 
-// ÖØÖÃ¼ÆÊ±Æ÷
+// é‡ç½®è®¡æ—¶å™¨
 void resetTimer(Timer* timer)
 {
     initializeTimer(timer);
 }
 
-// »ñÈ¡¾­¹ıµÄÊ±¼ä
+// è·å–ç»è¿‡çš„æ—¶é—´
 int getElapsedTime(Timer* timer)
 {
     if (timer->running)
